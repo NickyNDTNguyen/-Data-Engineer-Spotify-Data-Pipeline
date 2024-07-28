@@ -1,4 +1,4 @@
-**SPOTIFY DATA ENGINEER PROJECT**
+<h1>SPOTIFY DATA ENGINEER PROJECT</h1>
 
 1.  **Problem Statement**
 
@@ -36,7 +36,8 @@ this bucket will be used to store raw data files.
 Thirdly, we prepare the AWS Lambda function to connect to the Spotify
 API and get data sources. The **client_id** and **client_secret** must
 be defined in **Environment
-Variables**.![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image13.png)
+Variables**.
+![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image13.png)
 
 After reading and storing data from Spotify API, we will trigger the
 transformation Glue Job (in point 3.2) by the following code:
@@ -84,8 +85,7 @@ job to be triggered whenever the Lambda function is called.
 
 ![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image10.png)
 
-3.  **Loading transformed data into Data Warehouse (Snowflake
-    > database)**
+3.  **Loading transformed data into Data Warehouse (Snowflake database)**
 
 The most important thing to load data from AWS S3 to the external
 platform, in this project is the Data Warehouse Snowflake, is to create
@@ -93,11 +93,9 @@ a secure connection between AWS and this external platform.
 
 -   Create an IAM role with the S3 Access right.
 
--   In Snowflake, create an INTEGRATION with STORAGE_AWS_ROLE_ARN
-    > contains information from ARN of the IAM role above.
+-   In Snowflake, create an INTEGRATION with STORAGE_AWS_ROLE_ARN contains information from ARN of the IAM role above.
 
--   When the INTEGRATION was created, take the information of
-    > STORAGE_AWS_IAM_USER_ARN and STORAGE_AWS_EXTERNAL_ID.
+-   When the INTEGRATION was created, take the information of STORAGE_AWS_IAM_USER_ARN and STORAGE_AWS_EXTERNAL_ID.
 
 -   Paste them back the Trust Policy of the IAM Role.
 
@@ -132,6 +130,5 @@ from AWS S3 to Snowflake whenever a new file is uploaded into AWS S3.
 There is one more step that needs to be configured for automatic loading
 data is to create an Event in AWS S3. We will use SQS queue with
 information from the notification_channel of the corresponding
-Snowpipe.![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image12.png){width="2.7706233595800525in"
-height="3.252104111986002in"}![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image16.png){width="3.741279527559055in"
-height="3.25in"}
+Snowpipe.
+![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image12.png)![](vertopal_f2a99360002b48f4a712c9386ba79219/media/image16.png)
